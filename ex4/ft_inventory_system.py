@@ -7,7 +7,7 @@
 #   By: trakotos <trakotos@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/04/01 17:16:27 by trakotos            #+#    #+#            #
-#   Updated: 2026/04/02 11:15:37 by trakotos           ###   ########.fr      #
+#   Updated: 2026/04/02 11:17:03 by trakotos           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -62,7 +62,8 @@ def display_info(inventory: dict[str, int]) -> None:
     print(f"Got inventory: {res}")
     print(f"Item list: {key_lists}")
     print(
-        f"Total quantity of the {len(key_lists)} " f"items: {sum(inventory.values())}"
+        f"Total quantity of the {len(key_lists)} "
+        f"items: {sum(inventory.values())}"
     )
     if len(inventory) == 0:
         return
