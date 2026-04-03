@@ -7,26 +7,11 @@
 #   By: trakotos <trakotos@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/04/01 17:16:27 by trakotos            #+#    #+#            #
-#   Updated: 2026/04/02 11:17:03 by trakotos           ###   ########.fr      #
+#   Updated: 2026/04/03 17:28:29 by trakotos           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 import sys
-
-
-def split(s: str, delim: str) -> list[str]:
-    if len(delim) != 1:
-        raise TypeError(f"parameters '{delim}' is not a chr")
-    res: list[str] = []
-    tmp: str = ""
-    for c in s:
-        if c == delim and tmp != "":
-            res += [tmp]
-            tmp = ""
-        if c != delim:
-            tmp += c
-    res += [tmp]
-    return res
 
 
 def update_dict(dict: dict[str, int], key: str, val: str) -> None:
@@ -35,7 +20,7 @@ def update_dict(dict: dict[str, int], key: str, val: str) -> None:
         dict.update({key: v})
     except ValueError as e:
         print(f"Quantity error for '{key}': {e}")
-    except TypeError as e:
+    except Exception as e:
         print(e)
 
 
@@ -43,7 +28,7 @@ def parse(args: list[str]) -> dict[str, int]:
     res: dict[str, int] = {}
     for arg in args:
         try:
-            val = split(arg, ":")
+            val = arg.split(":")
             if len(val) != 2:
                 raise ValueError(f"Error - invalid parameter '{arg}'")
             key, value = val

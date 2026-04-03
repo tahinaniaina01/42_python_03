@@ -7,7 +7,7 @@
 #   By: trakotos <trakotos@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/04/02 11:20:36 by trakotos            #+#    #+#            #
-#   Updated: 2026/04/02 16:28:32 by trakotos           ###   ########.fr      #
+#   Updated: 2026/04/03 17:25:38 by trakotos           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -49,11 +49,7 @@ if __name__ == "__main__":
     print("=== Game Data Stream Processor ===")
     events = get_event_list()
     ten_events = [random.choice(events) for _ in range(10)]
-    consume_events = consume_event(ten_events)
     print(f"Built list of 10 events: {ten_events}")
-    for _ in range(10):
-        try:
-            print(f"Got event from list: {next(consume_events)}")
-            print(f"Remains in list: {ten_events}")
-        except StopIteration:
-            print("list is empty")
+    for ev in consume_event(ten_events):
+        print(f"Got event from list: {ev}")
+        print(f"Remains in list: {ten_events}")

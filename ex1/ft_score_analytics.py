@@ -7,7 +7,7 @@
 #   By: trakotos <trakotos@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/03/29 15:56:16 by trakotos            #+#    #+#            #
-#   Updated: 2026/03/29 16:17:12 by trakotos           ###   ########.fr      #
+#   Updated: 2026/04/03 17:08:56 by trakotos           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -23,6 +23,8 @@ def parse_args(args: list[str]) -> list[int]:
             l += [val]
         except ValueError:
             print(f"Invalid parameter: '{arg}'")
+        except Exception as e:
+            print(e)
     return l
 
 
@@ -38,10 +40,11 @@ def print_stat() -> None:
     sum_scores = sum(scores)
     min_score = min(scores)
     max_score = max(scores)
+    avarage = sum_scores / nb_scores
     print(f"Scores processed: {scores}")
     print(f"Total players: {nb_scores}")
     print(f"Total score: {sum_scores}")
-    print(f"Average score: {sum_scores / nb_scores}")
+    print(f"Average score: {avarage:.1f}")
     print(f"High score: {max_score}")
     print(f"Low score: {min_score}")
     print(f"Score range: {max_score - min_score}")

@@ -7,7 +7,7 @@
 #   By: trakotos <trakotos@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/03/29 16:19:27 by trakotos            #+#    #+#            #
-#   Updated: 2026/04/02 17:01:50 by trakotos           ###   ########.fr      #
+#   Updated: 2026/04/03 17:13:12 by trakotos           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -21,15 +21,9 @@ class InputError(Exception):
 
 def get_player_pos() -> tuple[float, float, float]:
     coords: list[float] = []
-    datas: list[str] = []
-    res: str = ""
-    for c in input("Enter new coordinates as floats in format 'x,y,z': "):
-        if c != ",":
-            res += c
-        else:
-            datas += [res]
-            res = ""
-    datas += [res]
+    datas = input(
+        "Enter new coordinates as floats in format 'x,y,z': "
+    ).split(",")
     if len(datas) != 3:
         raise InputError("Invalid syntax")
     for data in datas:
@@ -38,6 +32,8 @@ def get_player_pos() -> tuple[float, float, float]:
             val = float(data)
         except ValueError as e:
             raise ValueError(f"Error on parameter '{data}': {e}")
+        except Exception as e:
+            raise e
         coords += [val]
     return (coords[0], coords[1], coords[2])
 
@@ -47,9 +43,7 @@ def test_get_player_pos() -> tuple[float, float, float]:
     while coord is None:
         try:
             coord = get_player_pos()
-        except InputError as e:
-            print(e)
-        except ValueError as e:
+        except Exception as e:
             print(e)
     return coord
 

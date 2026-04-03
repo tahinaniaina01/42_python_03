@@ -7,7 +7,7 @@
 #   By: trakotos <trakotos@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/03/30 17:58:57 by trakotos            #+#    #+#            #
-#   Updated: 2026/04/02 11:19:46 by trakotos           ###   ########.fr      #
+#   Updated: 2026/04/03 17:22:48 by trakotos           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -48,7 +48,7 @@ def gen_player_achievements() -> set[str]:
     return res
 
 
-def difference(pa: set[str], achivements: list[set[str]]):
+def difference(pa: set[str], achivements: list[set[str]]) -> set[str]:
     res = pa
     for a in achivements:
         res = res.difference(a)
